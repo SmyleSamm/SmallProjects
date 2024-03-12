@@ -1,3 +1,4 @@
+package src;
 public class Main
 {
     private static String[] programms;
@@ -18,6 +19,7 @@ public class Main
     }
     private static int countProgramms(){
         //searches the whole Folder for "Showcase[...].java"
+        
         return 3;
     }
     private static String[] returnAllShowcaseProgramms(){
