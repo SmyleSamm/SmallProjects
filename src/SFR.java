@@ -5,7 +5,7 @@ public class SFR
     public SFR(){
 
     }
-    public static LinkedList<String> filesContainWord(String word){
-        return null;
-    } 
+    //public static LinkedList<String> filesContainWord(String word){
+     //   return null;
+    //} 
 }
