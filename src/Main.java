@@ -18,8 +18,11 @@ public class Main
             case "Calculator":
                 src.showcase.Calculator.main(null);
                 break;
-            case "Test2":
-                src.showcase.Test2.main(null);
+            case "TextAdventure":
+                src.showcase.TextAdventure.main(null);
+                break;
+            case "Guesser":
+                src.showcase.Guesser.main(null);
                 break;
             default:
                 System.out.println("Invalid number, chose again!");
