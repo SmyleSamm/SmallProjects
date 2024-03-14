@@ -19,7 +19,7 @@ public class Calculator {
             System.out.println("What shall be the second number?");
             num2=Helper.intInput();
             Helper.c();
-            System.out.println("What do you want to do?\n1. addition\n2. substraction\n3. multiplication\n4. division");
+            System.out.println("What do you want to do?\n1. addition\n2. substraction\n3. multiplication\n4. division\n0. Exit");
             int ans = Helper.intInput();
             Helper.c();
             switch(ans){
@@ -35,12 +35,16 @@ public class Calculator {
                 case 4:
                     System.out.println("Your number is: "+division());
                     break;
+                case 0:
+                    running=false;
+                    break;
                 default:
                     System.out.println("Invalid number!");
                     break;
             }
         }
         System.out.println("Have a great day!");
+        src.Main.start();
     }
     private static int addition(){
         return num1+num2;
