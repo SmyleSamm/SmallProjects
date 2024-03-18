@@ -20,4 +20,11 @@ public class Helper {
             e.printStackTrace();
         }
     }
+    public static void delay(int i){
+        try{
+            Thread.sleep(i);
+        }catch(InterruptedException e){
+
+        }
+    }
 }
