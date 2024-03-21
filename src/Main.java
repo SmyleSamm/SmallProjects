@@ -25,6 +25,12 @@ public class Main
             case "Guesser":
                 src.showcase.Guesser.main(null);
                 break;
+            case "BinaryToInt":
+                src.showcase.BinaryToInt.main(null);
+                break;
+            case "TodoList":
+                src.showcase.TodoList.main(null);
+                break;
             case "null":
                 Helper.c();
                 System.exit(0);
