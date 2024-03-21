@@ -19,6 +19,7 @@ public class TodoList {
         switch(ans){
             case 1:
                 view();
+                intro();
                 break;
             case 2:
                 edit();
@@ -33,10 +34,9 @@ public class TodoList {
             System.out.println("Your Todo-List is empty!");
         else
         System.out.println("This is the content of your Todo-List:");
-        for(int i = list.size()-1; i >= 0; --i){
-            System.out.println(list.size()-i+": "+list.get(i));
+        for(int i = 0; i < list.size(); ++i){
+            System.out.println(i+1+": "+list.get(i));
         }
-        intro();
     }
     public static void edit(){
         System.out.println("1. Add task to Todo-List");
@@ -72,9 +72,29 @@ public class TodoList {
         intro();
     }
     public static void remove(){
-
+        System.out.println("Name the index of the, to be removeble task.");
+        view();
+        int ans = Helper.intInput();
+        Helper.c();
+        if(ans>=0&&ans<list.size())
+            list.remove(ans-1);
+        else
+            System.out.println("No task found under the index of "+ans);
+        intro();
     }
     public static void rename(){
-
+        System.out.println("Name the index of the, to be renamed task.");
+        view();
+        int ansI = Helper.intInput();
+        Helper.c();
+        if(ansI<=0||ansI>list.size()){
+            System.out.println("No task found under the index of "+ansI);
+            rename();
+        }
+        System.out.println("Now enter the new name of the task.");
+        String ansS = Helper.stringInput();
+        list.set(ansI-1, ansS);
+        Helper.c();
+        intro();
     }
 }
