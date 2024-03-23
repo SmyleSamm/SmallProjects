@@ -2,8 +2,10 @@ package src.showcase;
 import java.util.LinkedList;
 
 import src.Helper;
+import src.SFR;
 
 public class TodoList {
+    private static String savePath = "user/save/Todo-List";
     private static LinkedList<String> list = new LinkedList<String>();
     public static void main(String[] args) {
         Helper.c();
@@ -103,6 +105,13 @@ public class TodoList {
         intro();
     }
     public static void saveToFile(){
+        System.out.println("Enter Todo-List name:");
+        String ans = Helper.stringInput();
+        Helper.c();
+        if(!SFR.checkPath(savePath)){
+            SFR.createFolder(savePath);
+        }
+        SFR.createFile(ans, savePath);
         intro();
     }
 }

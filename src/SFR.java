@@ -11,6 +11,7 @@ public class SFR
     }
     public static void main(String[] args) {
         System.out.println(returnFilesInFolder("./src/showcase/").size());
+        System.out.println(checkPath("src/showcase"));
     }
     public static List<String> returnFilesInFolder(String folderPath){
         return Stream.of(new File(folderPath).listFiles())
@@ -19,5 +20,15 @@ public class SFR
     }
     public static int returnAmountInFolder(String folderPath){
         return returnFilesInFolder(folderPath).size();
+    }
+    public static boolean checkPath(String path){
+        File f = new File(path);
+        return f.exists();
+    }
+    public static void createFolder(String path){
+
+    }
+    public static void createFile(String name, String path){
+
     }
 }
