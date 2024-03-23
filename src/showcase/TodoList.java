@@ -11,18 +11,23 @@ public class TodoList {
         intro();
     }   
     public static void intro(){
-        System.out.println("1. View Todo-List");
-        System.out.println("2. Edit Todo-List");
+        String[] nameCon = {"View", "Edit", "Save"};
+        for(int i = 1; i <= nameCon.length; ++i){
+            System.out.println(i+". "+nameCon[i-1]+" Todo-List");
+        }
         System.out.println("0. Exit");
         int ans = Helper.intInput();
         Helper.c();
-        switch(ans){
-            case 1:
+        switch(nameCon[ans-1]){
+            case "View":
                 view();
                 intro();
                 break;
-            case 2:
+            case "Edit":
                 edit();
+                break;
+            case "Save":
+                saveToFile();
                 break;
             default:
                 src.Main.start();
@@ -95,6 +100,9 @@ public class TodoList {
         String ansS = Helper.stringInput();
         list.set(ansI-1, ansS);
         Helper.c();
+        intro();
+    }
+    public static void saveToFile(){
         intro();
     }
 }
