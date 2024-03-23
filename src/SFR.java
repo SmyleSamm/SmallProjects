@@ -26,9 +26,13 @@ public class SFR
         return f.exists();
     }
     public static void createFolder(String path){
-
+        new File(path).mkdirs();
     }
     public static void createFile(String name, String path){
+        try{
+            new File(path+"/"+name+".txt").createNewFile();
+        }catch(Exception e){
 
+        }
     }
 }

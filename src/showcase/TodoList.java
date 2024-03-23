@@ -18,6 +18,7 @@ public class TodoList {
             System.out.println(i+". "+nameCon[i-1]+" Todo-List");
         }
         System.out.println("0. Exit");
+        //create if-Statement for correct user Input: 0 => Index -1!!!!!
         int ans = Helper.intInput();
         Helper.c();
         switch(nameCon[ans-1]){
@@ -112,6 +113,6 @@ public class TodoList {
             SFR.createFolder(savePath);
         }
         SFR.createFile(ans, savePath);
-        intro();
+        //intro();
     }
 }
