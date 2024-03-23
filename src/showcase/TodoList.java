@@ -13,7 +13,7 @@ public class TodoList {
         intro();
     }   
     public static void intro(){
-        String[] nameCon = {"View", "Edit", "Save"};
+        String[] nameCon = {"View", "Edit", "Load", "Save"};
         for(int i = 1; i <= nameCon.length; ++i){
             System.out.println(i+". "+nameCon[i-1]+" Todo-List");
         }
@@ -28,6 +28,9 @@ public class TodoList {
                 break;
             case "Edit":
                 edit();
+                break;
+            case "Load":
+                loadTodo();
                 break;
             case "Save":
                 saveToFile();
@@ -113,6 +116,12 @@ public class TodoList {
             SFR.createFolder(savePath);
         }
         SFR.createFile(ans, savePath);
-        //intro();
+        while(!SFR.checkPath(savePath+"/"+ans+".txt")){} //waits until the File excists
+        System.out.println("File successfully saved! NFC WIP");
+        intro();
+    }
+    public static void loadTodo(){
+        System.out.println("NFC WIP");
+        intro();
     }
 }
