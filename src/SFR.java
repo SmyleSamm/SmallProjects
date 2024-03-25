@@ -1,5 +1,6 @@
 package src;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -34,5 +35,17 @@ public class SFR
         }catch(Exception e){
 
         }
+    }
+    public static String[] returnContentFromTextFile(String path){
+        List<String> lines = new ArrayList<>();
+        try(BufferedReader reader = new BufferedReader(new FileReader(path))){
+            String line;
+            while((line = reader.readLine())!=null){
+                lines.add(line);
+            }
+        }catch(IOException e){
+            System.err.println("Failed to load save!");
+        }
+        return lines.toArray(new String[0]);
     }
 }
