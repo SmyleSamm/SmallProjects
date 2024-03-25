@@ -1,9 +1,7 @@
 package src;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.*;
+import java.util.stream.*;
 public class SFR
 {
     //SmyleFileReader
@@ -38,14 +36,21 @@ public class SFR
     }
     public static String[] returnContentFromTextFile(String path){
         List<String> lines = new ArrayList<>();
-        try(BufferedReader reader = new BufferedReader(new FileReader(path))){
-            String line;
-            while((line = reader.readLine())!=null){
-                lines.add(line);
+        File f = new File(path);
+        if(f.exists()&&f.canRead()){
+            try(BufferedReader reader = new BufferedReader(new FileReader(path))){
+                String line;
+                while((line = reader.readLine())!=null){
+                    lines.add(line);
+                }
+            }catch(IOException e){
+                System.err.println("Failed to load save!");
             }
-        }catch(IOException e){
-            System.err.println("Failed to load save!");
+            return lines.toArray(new String[0]);
+        }else{
+            System.out.println("Error in SFR line: "+(Thread.currentThread().getStackTrace())[2].getLineNumber());
         }
-        return lines.toArray(new String[0]);
+        
+        return null;
     }
 }
