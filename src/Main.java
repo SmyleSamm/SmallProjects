@@ -14,6 +14,7 @@ public class Main
         System.out.println("Enter the number of the desired application!");
         choseApplication(returnFileName(showcasePath, Helper.intInput()-1));
     }
+    //a switch statement to see what application the user wants to use. If a new application is added, u have to add it in heare and do what every u want it to do!
     public static void choseApplication(String app){
         switch(app){
             case "Calculator":
@@ -40,6 +41,7 @@ public class Main
                 choseApplication(returnFileName(showcasePath, Helper.intInput()-1));
         }
     }
+    //it prints all the programms it can find in the showcase folder and then prints the exit thing... bro dont ask me xD
     private static void printProgramms(){
         for(int i = 0; i < countProgramms(); ++i){
             System.out.println((i+1)+". programm is "+returnFileName(showcasePath,i));
