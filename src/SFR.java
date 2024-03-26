@@ -63,4 +63,12 @@ public class SFR
             System.err.println("Error writing content to file: "+e.getMessage());
         }
     }
+    public static String[] returnFileNamesInDirectory(String path){
+        String[] name = new String[returnAmountInFolder(path)];
+        for(int i = 0; i < returnAmountInFolder(path); ++i){
+            String names = returnFilesInFolder(path).get(i);
+            name[i] = names.split("\\.")[0];
+        }
+        return name;
+    }
 }
