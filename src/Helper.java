@@ -1,13 +1,29 @@
 package src;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.*;
 
 public class Helper {
     public static String stringInput(){
-        return new java.util.Scanner(System.in).nextLine();
+        Scanner scan = new Scanner(System.in);
+        String ans = scan.nextLine();
+        scan.close();
+        return ans;
     }
     public static int intInput(){
-        return new java.util.Scanner(System.in).nextInt();
+        int ans=-1;
+        Scanner scan = new java.util.Scanner(System.in);
+        try{
+            ans = scan.nextInt();
+        }
+        catch(InputMismatchException e){
+            System.out.println("Input is wrong!\nPlease enter an Integer e.g. 1,2,...");
+        }
+        finally{
+            scan.nextLine();
+            scan.close();
+        }
+        return ans;
     }
     public static void c() {
         try {
