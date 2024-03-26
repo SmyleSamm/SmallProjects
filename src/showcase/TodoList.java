@@ -1,11 +1,12 @@
 package src.showcase;
-import java.util.LinkedList;
+import java.util.*;
+import java.io.*;
 
 import src.Helper;
 import src.SFR;
 
 public class TodoList {
-    private static String savePath = "user/save/Todo-List";
+    private static final String savePath = "user/save/Todo-List", todoExtension = ".txt";
     private static LinkedList<String> list = new LinkedList<String>();
     public static void main(String[] args) {
         Helper.c();
@@ -116,12 +117,24 @@ public class TodoList {
             SFR.createFolder(savePath);
         }
         SFR.createFile(ans, savePath);
-        while(!SFR.checkPath(savePath+"/"+ans+".txt")){} //waits until the File excists
-        System.out.println("File successfully saved! NFC WIP");
+        if(saveContent(savePath+"/"+ans+todoExtension))
+            System.out.println("ToDo-List successfully saved!");
+        else
+            System.out.println("Failed during saving Todo-List");
         intro();
     }
+    private static boolean saveContent(String path){
+        File f = new File(path);
+        if(f.exists()){
+            SFR.writeContentToTextFile(list.toArray(new String[0]), path);
+            return true;
+        }
+        return false;
+    }
     public static void loadTodo(){
-        System.out.println("NFC WIP");
-        intro();
+        //use code from printProgramms in Main.java
+        //String todoName;
+        //String[] list = SFR.returnContentFromTextFile(todoName);
+        //intro();
     }
 }
