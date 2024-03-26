@@ -132,9 +132,20 @@ public class TodoList {
         return false;
     }
     public static void loadTodo(){
-        //use code from printProgramms in Main.java
-        //String todoName;
-        //String[] list = SFR.returnContentFromTextFile(todoName);
-        //intro();
+        for(int i = 0; i < SFR.returnAmountInFolder(savePath); ++i)
+            System.out.println((i+1)+". ToDo-List is: "+SFR.returnFileNamesInDirectory(savePath)[i]);
+        System.out.println("Choose your ToDo-List!\nEvery unsaved changes will be lost in your current ToDo-List!\nEnter 0. to Exit!");
+        int ans = Helper.intInput();
+        Helper.c();
+        if(ans>=1)
+            loadContentToCurrentSystem(SFR.returnFileNamesInDirectory(savePath)[ans-1]);
+        intro();
+    }
+    private static void loadContentToCurrentSystem(String todoName){
+        list = new LinkedList<String>();
+        String[] content = SFR.returnContentFromTextFile(savePath+"/"+todoName+todoExtension);
+        for(int i = 0; i < content.length; ++i){
+            list.add(i, content[i]);
+        }
     }
 }
