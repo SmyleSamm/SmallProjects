@@ -53,4 +53,14 @@ public class SFR
         
         return null;
     }
+    public static void writeContentToTextFile(String[] c, String path){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(path))){
+            for(int i = 0; i < c.length; ++i){
+                writer.write(c[i]);
+                writer.newLine();
+            }
+        }catch(IOException e){
+            System.err.println("Error writing content to file: "+e.getMessage());
+        }
+    }
 }
