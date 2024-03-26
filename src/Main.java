@@ -12,7 +12,26 @@ public class Main
     public static void start(){
         printProgramms();
         System.out.println("Enter the number of the desired application!");
-        choseApplication(SFR.returnFileNamesInDirectory(showcasePath)[Helper.intInput()-1]);
+        int ans = 0;
+        if(Helper.intInput()!=-409){
+            if(ans>=1&&ans<SFR.returnAmountInFolder(showcasePath))
+                choseApplication(SFR.returnFileNamesInDirectory(showcasePath)[ans-1]);
+            else
+                //invalid input!
+                start();
+            
+        }else{
+            start();
+        }
+        if(ans>=1&&ans<SFR.returnAmountInFolder(showcasePath)){
+            
+        }else if(ans==0){
+            Helper.c();
+            System.exit(0);
+        }else{
+            System.out.println("Invalid input!\nTry again.");
+            start();
+        }
     }
     //a switch statement to see what application the user wants to use. If a new application is added, u have to add it in heare and do what every u want it to do!
     public static void choseApplication(String app){
@@ -32,13 +51,6 @@ public class Main
             case "TodoList":
                 src.showcase.TodoList.main(null);
                 break;
-            case "null":
-                Helper.c();
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Invalid number, chose again!");
-                choseApplication(SFR.returnFileNamesInDirectory(showcasePath)[Helper.intInput()-1]);
         }
     }
     //it prints all the programms it can find in the showcase folder and then prints the exit thing... bro dont ask me xD

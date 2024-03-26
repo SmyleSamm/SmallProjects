@@ -10,13 +10,15 @@ public class Helper {
         scan.close();
         return ans;
     }
-    public static int intInput()throws InputMismatchException{
-        int ans=-1;
+    public static int intInput(){
+        int ans=0;
         Scanner scan = new java.util.Scanner(System.in);
         try{
             ans = scan.nextInt();
         }catch(InputMismatchException e){
-            throw e;
+            Helper.c();
+            System.out.println("Wrong Input!\nOnly numbers are accepted!");
+            return -409;
         }finally{
             scan.nextLine();
             scan.close();}
