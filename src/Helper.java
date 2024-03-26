@@ -10,19 +10,16 @@ public class Helper {
         scan.close();
         return ans;
     }
-    public static int intInput(){
+    public static int intInput()throws InputMismatchException{
         int ans=-1;
         Scanner scan = new java.util.Scanner(System.in);
         try{
             ans = scan.nextInt();
-        }
-        catch(InputMismatchException e){
-            System.out.println("Input is wrong!\nPlease enter an Integer e.g. 1,2,...");
-        }
-        finally{
+        }catch(InputMismatchException e){
+            throw e;
+        }finally{
             scan.nextLine();
-            scan.close();
-        }
+            scan.close();}
         return ans;
     }
     public static void c() {
