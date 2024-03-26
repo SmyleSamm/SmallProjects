@@ -22,7 +22,7 @@ public class TodoList {
         //create if-Statement for correct user Input: 0 => Index -1!!!!!
         int ans = Helper.intInput();
         Helper.c();
-        if(ans<=0)
+        if(ans<=0&&ans<nameCon.length)
             src.Main.start();
         switch(nameCon[ans-1]){
             case "View":
