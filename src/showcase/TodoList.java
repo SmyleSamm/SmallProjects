@@ -22,6 +22,8 @@ public class TodoList {
         //create if-Statement for correct user Input: 0 => Index -1!!!!!
         int ans = Helper.intInput();
         Helper.c();
+        if(ans<=0)
+            src.Main.start();
         switch(nameCon[ans-1]){
             case "View":
                 view();
