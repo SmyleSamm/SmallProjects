@@ -44,7 +44,7 @@ public class SFR
                     lines.add(line);
                 }
             }catch(IOException e){
-                System.err.println("Failed to load save!");
+                System.out.println("Error in SFR line: "+(Thread.currentThread().getStackTrace())[2].getLineNumber());
             }
             return lines.toArray(new String[0]);
         }else{
