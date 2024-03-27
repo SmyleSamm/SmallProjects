@@ -3,6 +3,8 @@ package src;
 import java.io.*;
 import java.util.*;
 
+import src.Exception.IntInputException;
+
 public class Helper {
     public static String stringInput(){
         Scanner scan = new Scanner(System.in);
@@ -10,18 +12,15 @@ public class Helper {
         scan.close();
         return ans;
     }
-    public static int intInput(){
+    public static int intInput() throws IntInputException{
         int ans=0;
         Scanner scan = new java.util.Scanner(System.in);
         try{
             ans = scan.nextInt();
         }catch(InputMismatchException e){
-            Helper.c();
-            System.out.println("Wrong Input!\nOnly numbers are accepted!");
+            throw new src.Exception.IntInputException();
             return -409;
-        }finally{
-            scan.nextLine();
-            scan.close();}
+        }
         return ans;
     }
     public static void c() {
