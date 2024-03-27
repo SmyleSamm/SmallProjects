@@ -19,7 +19,6 @@ public class Helper {
             ans = scan.nextInt();
         }catch(InputMismatchException e){
             throw new src.Exception.IntInputException();
-            return -409;
         }
         return ans;
     }

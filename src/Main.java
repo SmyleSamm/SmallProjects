@@ -1,5 +1,7 @@
 package src;
 
+import src.Exception.IntInputException;
+
 public class Main
 {
     public static final String showcasePath = "./src/showcase";
@@ -12,25 +14,22 @@ public class Main
     public static void start(){
         printProgramms();
         System.out.println("Enter the number of the desired application!");
-        int ans = 0;
-        if(Helper.intInput()!=-409){
-            if(ans>=1&&ans<SFR.returnAmountInFolder(showcasePath))
-                choseApplication(SFR.returnFileNamesInDirectory(showcasePath)[ans-1]);
-            else
-                //invalid input!
-                start();
-            
-        }else{
+        int ans=0;
+        try{
+            ans = Helper.intInput();
+        }catch(IntInputException e){
+            Helper.c();
+            System.out.println(e);
             start();
         }
         if(ans>=1&&ans<SFR.returnAmountInFolder(showcasePath)){
-            
+            choseApplication(SFR.returnFileNamesInDirectory(showcasePath)[ans-1]);
         }else if(ans==0){
             Helper.c();
             System.exit(0);
         }else{
-            System.out.println("Invalid input!\nTry again.");
-            start();
+            Helper.c();
+            System.out.println("Invalid Input!\nPlease enter a number of the applicatiob you want to use.");
         }
     }
     //a switch statement to see what application the user wants to use. If a new application is added, u have to add it in heare and do what every u want it to do!

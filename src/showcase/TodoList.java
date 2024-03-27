@@ -4,6 +4,7 @@ import java.io.*;
 
 import src.Helper;
 import src.SFR;
+import src.Exception.IntInputException;
 
 public class TodoList {
     private static final String savePath = "user/save/Todo-List", todoExtension = ".txt";
@@ -20,7 +21,14 @@ public class TodoList {
         }
         System.out.println("0. Exit");
         //create if-Statement for correct user Input: 0 => Index -1!!!!!
-        int ans = Helper.intInput();
+        int ans = 0;
+        try{
+            ans = Helper.intInput();
+        }catch(IntInputException e){
+            Helper.c();
+            System.out.println(e);
+            intro();
+        }
         Helper.c();
         if(ans<=0&&ans<nameCon.length)
             src.Main.start();
@@ -57,7 +65,14 @@ public class TodoList {
         System.out.println("2. Remove task from Todo-List");
         System.out.println("3. Rename task from Todo-List");
         System.out.println("0. Back");
-        int ans = Helper.intInput();
+        int ans = 0;
+        try{
+            ans = Helper.intInput();
+        }catch(IntInputException e){
+            Helper.c();
+            System.out.println(e);
+            edit();
+        }
         Helper.c();
         switch(ans){
             case 1:
@@ -88,7 +103,14 @@ public class TodoList {
     public static void remove(){
         System.out.println("Name the index of the, to be removeble task.");
         view();
-        int ans = Helper.intInput();
+        int ans = 0;
+        try{
+            ans = Helper.intInput();
+        }catch(IntInputException e){
+            Helper.c();
+            System.out.println(e);
+            remove();
+        }
         Helper.c();
         if(ans>=0&&ans<list.size())
             list.remove(ans-1);
@@ -99,7 +121,14 @@ public class TodoList {
     public static void rename(){
         System.out.println("Name the index of the, to be renamed task.");
         view();
-        int ansI = Helper.intInput();
+        int ansI = 0;
+        try{
+            ansI = Helper.intInput();
+        }catch(IntInputException e){
+            Helper.c();
+            System.out.println(e);
+            rename();
+        }
         Helper.c();
         if(ansI<=0||ansI>list.size()){
             System.out.println("No task found under the index of "+ansI);
@@ -137,7 +166,14 @@ public class TodoList {
         for(int i = 0; i < SFR.returnAmountInFolder(savePath); ++i)
             System.out.println((i+1)+". ToDo-List is: "+SFR.returnFileNamesInDirectory(savePath)[i]);
         System.out.println("Choose your ToDo-List!\nEvery unsaved changes will be lost in your current ToDo-List!\nEnter 0. to Exit!");
-        int ans = Helper.intInput();
+        int ans = 0;
+        try{
+            ans = Helper.intInput();
+        }catch(IntInputException e){
+            Helper.c();
+            System.out.println(e);
+            loadTodo();
+        }
         Helper.c();
         if(ans>=1)
             loadContentToCurrentSystem(SFR.returnFileNamesInDirectory(savePath)[ans-1]);

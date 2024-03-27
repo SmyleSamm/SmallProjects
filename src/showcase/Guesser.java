@@ -1,6 +1,7 @@
 package src.showcase;
 
 import src.Helper;
+import src.Exception.IntInputException;
 
 public class Guesser {
     private static boolean running;
@@ -16,7 +17,14 @@ public class Guesser {
     private static void loop(){
         while(running){
             System.out.println("Enter the maximum number!\n0 interupts the programm!");
-            int ans = Helper.intInput();
+            int ans = 0;
+            try{
+            ans = Helper.intInput();
+        }catch(IntInputException e){
+            Helper.c();
+            System.out.println(e);
+            loop();
+        }
             Helper.c();
             if(ans==0){
                 running=false;
@@ -24,7 +32,14 @@ public class Guesser {
             }
             int l = new java.util.Random().nextInt(ans+1);
             System.out.println("Your number is between and not includes 0 and "+(ans+1)+"! What number do you think it is?");
-            int answer = Helper.intInput();
+            int answer = 0;
+            try{
+                ans = Helper.intInput();
+            }catch(IntInputException e){
+                Helper.c();
+                System.out.println(e);
+                loop();
+            }
             Helper.c();
             if(answer==l){
                 System.out.println("You guessed correctly!");

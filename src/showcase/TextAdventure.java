@@ -1,5 +1,6 @@
 package src.showcase;
 import src.Helper;
+import src.Exception.IntInputException;
 
 public class TextAdventure {
     private static boolean running;
@@ -22,7 +23,14 @@ public class TextAdventure {
         
     }
     private static int inputReader(int low, int max){
-        int ans = Helper.intInput();
+        int ans = 0;
+        try{
+            ans = Helper.intInput();
+        }catch(IntInputException e){
+            Helper.c();
+            System.out.println(e);
+            inputReader(low, max);
+        }
         if(ans<=max&&ans>=low){
             return ans;
         }else{

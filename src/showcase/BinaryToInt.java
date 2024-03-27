@@ -11,17 +11,17 @@ public class BinaryToInt
     }
     public static void intro(){
         System.out.println("Do you want to input a 1. Binary or a 2. Integer?");
-        int ans = Helper.intInput();
-        switch(ans){
+        //int ans = Helper.intInput();
+        switch(1){//ans
             case 1:
                 System.out.println("Input your Binary number:");
-                double sol1 = toInteger(Helper.intInput());
-                System.out.println("This binary represents the number "+sol1);
+                //double sol1 = toInteger(Helper.intInput());
+                //System.out.println("This binary represents the number "+sol1);
                 break;
             case 2:
                 System.out.println("Input your number!");
-                double sol2 = toBinary(Helper.intInput());
-                System.out.println("In Binary it is "+sol2);
+                //double sol2 = toBinary(Helper.intInput());
+                //System.out.println("In Binary it is "+sol2);
 
                 break;
             default:
