@@ -32,24 +32,11 @@ public class Main
             System.out.println("Invalid Input!\nPlease enter a number of the applicatiob you want to use.");
         }
     }
-    //a switch statement to see what application the user wants to use. If a new application is added, u have to add it in heare and do what every u want it to do!
     public static void choseApplication(String app){
-        switch(app){
-            case "Calculator":
-                src.showcase.Calculator.main(null);
-                break;
-            case "TextAdventure":
-                src.showcase.TextAdventure.main(null);
-                break;
-            case "Guesser":
-                src.showcase.Guesser.main(null);
-                break;
-            case "BinaryToInt":
-                src.showcase.BinaryToInt.main(null);
-                break;
-            case "TodoList":
-                src.showcase.TodoList.main(null);
-                break;
+        try{
+        Class.forName("src.showcase."+app).getMethod("main", String[].class).invoke(null, (Object)null);
+        }catch(Exception e){
+            System.out.println(e);
         }
     }
     //it prints all the programms it can find in the showcase folder and then prints the exit thing... bro dont ask me xD
