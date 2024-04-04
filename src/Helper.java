@@ -22,6 +22,24 @@ public class Helper {
         }
         return ans;
     }
+    public static int intInputInRange(int minNumber, int maxNumber){
+        Scanner scan = new Scanner(System.in);
+        int ans=0;
+        IntInputException inputException = new src.Exception.IntInputException();
+        try{
+            try{
+                ans=scan.nextInt();
+                if(ans<minNumber||ans>maxNumber)
+                    throw inputException;
+            }catch(Exception e){
+                throw inputException;
+            }
+        }catch(Exception e){
+            System.out.println("Invalid Input!\nPlease try again with a valid input.\nNumbers between "+minNumber+" and "+maxNumber);
+            intInputInRange(minNumber, maxNumber);
+        }
+        return ans;
+    }
     public static void c() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
