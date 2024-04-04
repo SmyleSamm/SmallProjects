@@ -1,5 +1,7 @@
 package src;
 
+import java.util.*;
+
 import src.Exception.IntInputException;
 
 public class Main
@@ -15,21 +17,16 @@ public class Main
         printProgramms();
         System.out.println("Enter the number of the desired application!");
         int ans=0;
-        try{
-            ans = Helper.intInput();
-        }catch(IntInputException e){
-            Helper.c();
-            System.out.println(e);
-            start();
-        }
-        if(ans>=1&&ans<SFR.returnAmountInFolder(showcasePath)){
+        ans = Helper.intInputInRange(0, 5);
+        if(ans>=1&&ans-1<SFR.returnAmountInFolder(showcasePath)){
             choseApplication(SFR.returnFileNamesInDirectory(showcasePath)[ans-1]);
         }else if(ans==0){
             Helper.c();
             System.exit(0);
         }else{
             Helper.c();
-            System.out.println("Invalid Input!\nPlease enter a number of the applicatiob you want to use.");
+            System.out.println("Invalid Input!\nPlease enter a number of the application you want to use.");
+            start();
         }
     }
     public static void choseApplication(String app){
