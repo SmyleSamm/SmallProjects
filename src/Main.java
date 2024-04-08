@@ -1,9 +1,5 @@
 package src;
 
-import java.util.*;
-
-import src.Exception.IntInputException;
-
 public class Main
 {
     public static final String showcasePath = "./src/showcase";
@@ -16,22 +12,17 @@ public class Main
     public static void start(){
         printProgramms();
         System.out.println("Enter the number of the desired application!");
-        int ans=0;
-        ans = Helper.intInputInRange(0, 5);
-        if(ans>=1&&ans-1<SFR.returnAmountInFolder(showcasePath)){
-            choseApplication(SFR.returnFileNamesInDirectory(showcasePath)[ans-1]);
-        }else if(ans==0){
-            Helper.c();
-            System.exit(0);
+        int ans = Helper.intInputInRange(0, 5) - 1;
+        if(ans>=1&&ans<=SFR.returnAmountInFolder(showcasePath)){
+            choseApplication(SFR.returnFileNamesInDirectory(showcasePath)[ans]);
         }else{
-            Helper.c();
-            System.out.println("Invalid Input!\nPlease enter a number of the application you want to use.");
-            start();
+            //Helper.c();
+            System.exit(0);
         }
     }
     public static void choseApplication(String app){
         try{
-        Class.forName("src.showcase."+app).getMethod("main", String[].class).invoke(null, (Object)null);
+            Class.forName("src.showcase."+app).getMethod("main", String[].class).invoke(null, (Object)null);
         }catch(Exception e){
             System.out.println(e);
         }
