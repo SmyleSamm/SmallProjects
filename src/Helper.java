@@ -35,8 +35,9 @@ public class Helper {
                 throw inputException;
             }
         }catch(Exception e){
+            scan.nextLine();
             System.out.println("Invalid Input!\nPlease try again with a valid input.\nNumbers between "+minNumber+" and "+maxNumber);
-            intInputInRange(minNumber, maxNumber);
+            return intInputInRange(minNumber, maxNumber);
         }
         return ans;
     }
@@ -54,8 +55,6 @@ public class Helper {
     public static void delay(int i){
         try{
             Thread.sleep(i);
-        }catch(InterruptedException e){
-
-        }
+        }catch(InterruptedException e){}
     }
 }
