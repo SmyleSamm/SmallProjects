@@ -8,9 +8,7 @@ import src.Exception.IntInputException;
 public class Helper {
     public static String stringInput(){
         Scanner scan = new Scanner(System.in);
-        String ans = scan.nextLine();
-        scan.close();
-        return ans;
+        return scan.nextLine();
     }
     public static int intInput() throws IntInputException{
         int ans=0;
