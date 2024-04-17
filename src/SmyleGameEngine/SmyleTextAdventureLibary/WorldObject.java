@@ -20,20 +20,22 @@ public class WorldObject
     public WorldObject[] getConnections(){
         WorldObject[] objects = new WorldObject[directionsAndConnections.length];
         IntStream.range(0, this.directionsAndConnections.length)
-            .forEach(i -> objects[i] = this.directionsAndConnections[i][1]);
+            .forEach(i -> objects[i] = (WorldObject)this.directionsAndConnections[i][1]);
         return objects;
     }
     public String[] getDirections(){
-        String directions = new String[directionsAndConnections.length];
+        String[] directions = new String[directionsAndConnections.length];
         IntStream.range(0, this.directionsAndConnections.length)
-            .forEach(i -> directions[i] = this.directionsAndConnections[i][0]);
+            .forEach(i -> directions[i] = (String)this.directionsAndConnections[i][0]);
         return directions;
     }
-    public void setConnections(WorldObject[] connections){
-        this.connections = connections;
-    }
-    public void setDirections(String[] directions){
-        this.directions = directions;
+    public void addNewConnections(Object[][] directionsAndConnections){
+        Object[][] newConnection = new Object[this.directionsAndConnections.length+directionsAndConnections.length][];
+        IntStream.range(0, this.directionsAndConnections.length)
+            .forEach(i -> newConnection[i] = this.directionsAndConnections[i]);
+        IntStream.range(this.directionsAndConnections.length, directionsAndConnections.length)
+            .forEach(i -> newConnection[i] = directionsAndConnections[i-this.directions.length]);
+        this.directionsAndConnections = newConnection;
     }
 
     //ATTRIBUTES ACCECIBILITY
