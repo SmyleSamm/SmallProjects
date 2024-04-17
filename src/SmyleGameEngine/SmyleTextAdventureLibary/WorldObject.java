@@ -18,28 +18,22 @@ public class WorldObject
         this.directions = new String[0];
     }
     public WorldObject[] getConnections(){
-        LinkedList<WorldObject> tempWorld = new LinkedList<WorldObject>();
-
-        Arrays.stream(this.connections)
-            .filter(worldObject -> worldObject != null)
-            .forEach(tempWorld::add);
-
-        WorldObject[] worldObjects = new WorldObject[tempWorld.size()];
-
-        IntStream.range(0, tempWorld.size())
-            .forEach(i -> worldObjects[i] = tempWorld.get(i));
-        return this.connections;
+        WorldObject[] objects = new WorldObject[directionsAndConnections.length];
+        IntStream.range(0, this.directionsAndConnections.length)
+            .forEach(i -> objects[i] = this.directionsAndConnections[i][1]);
+        return objects;
     }
-
     public String[] getDirections(){
+        String directions = new String[directionsAndConnections.length];
+        IntStream.range(0, this.directionsAndConnections.length)
+            .forEach(i -> directions[i] = this.directionsAndConnections[i][0]);
         return directions;
     }
-    public void setConnections(){
-
+    public void setConnections(WorldObject[] connections){
+        this.connections = connections;
     }
-    public void setDirections(){
-        WorldObject[] worldObjects = new WorldObject[directions.length+1];
-        Array.stream(this.connnections)
+    public void setDirections(String[] directions){
+        this.directions = directions;
     }
 
     //ATTRIBUTES ACCECIBILITY
