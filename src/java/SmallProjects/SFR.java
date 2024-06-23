@@ -9,8 +9,8 @@ public class SFR
 
     }
     public static void main(String[] args) {
-        System.out.println(returnFilesInFolder("./src/showcase/").size());
-        System.out.println(checkPath("src/showcase"));
+        System.out.println(returnFilesInFolder("./src/java/SmallProjects/showcase/").size());
+        System.out.println(checkPath("src/java/SmallProjects/showcase"));
     }
     public static List<String> returnFilesInFolder(String folderPath){
         return Stream.of(new File(folderPath).listFiles())

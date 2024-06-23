@@ -2,11 +2,12 @@ package SmallProjects;
 
 public class Main
 {
-    public static final String showcasePath = "./src/showcase";
+    public static final String showcasePath = "./src/java/SmallProjects/showcase";
+    public static final String showcaseClassPath = "SmallProjects.showcase.";
     public static void main(String[] args) {
-        //Helper.c();
-        //System.out.println("Hello!\nThis is a programm for many small projects of mine!\nAll of them are controlled via the console.\nHave fun, your Samm :]");
-        //start();
+        Helper.c();
+        System.out.println("Hello!\nThis is a programm for many small projects of mine!\nAll of them are controlled via the console.\nHave fun, your Samm :]");
+        start();
     }
     public static void start(){
         printProgramms();
@@ -21,7 +22,7 @@ public class Main
     }
     public static void choseApplication(String app){
         try{
-            Class.forName("src.showcase."+app).getMethod("main", String[].class).invoke(null, (Object)null);
+            Class.forName(showcaseClassPath+app).getMethod("main", String[].class).invoke(null, (Object)null);
         }catch(Exception e){
             System.out.println(e);
         }
