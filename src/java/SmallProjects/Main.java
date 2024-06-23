@@ -1,14 +1,13 @@
-package SmyllProjects;
+package SmallProjects;
 
 public class Main
 {
     public static final String showcasePath = "./src/showcase";
     public static void main(String[] args) {
-        Helper.c();
-        System.out.println("Hello!\nThis is a programm for many small projects of mine!\nAll of them are controlled via the console.\nHave fun, your Samm :]");
-        start();
+        //Helper.c();
+        //System.out.println("Hello!\nThis is a programm for many small projects of mine!\nAll of them are controlled via the console.\nHave fun, your Samm :]");
+        //start();
     }
-
     public static void start(){
         printProgramms();
         System.out.println("Enter the number of the desired application!");

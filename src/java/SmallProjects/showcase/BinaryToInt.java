@@ -1,6 +1,6 @@
-package src.showcase;
+package SmallProjects.showcase;
 
-import src.Helper;
+import SmallProjects.Helper;
 
 public class BinaryToInt
 {

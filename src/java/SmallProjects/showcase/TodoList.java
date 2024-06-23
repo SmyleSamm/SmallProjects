@@ -1,10 +1,10 @@
-package src.showcase;
+package SmallProjects.showcase;
 import java.util.*;
 import java.io.*;
 
-import src.Helper;
-import src.SFR;
-import src.Exception.IntInputException;
+import SmallProjects.Helper;
+import SmallProjects.SFR;
+import SmallProjects.Exception.IntInputException;
 
 public class TodoList {
     private static final String savePath = "user/save/Todo-List", todoExtension = ".txt";

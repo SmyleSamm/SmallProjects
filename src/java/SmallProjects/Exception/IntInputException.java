@@ -1,4 +1,4 @@
-package src.Exception;
+package SmallProjects.Exception;
 
 public class IntInputException extends Exception{
     public IntInputException(){

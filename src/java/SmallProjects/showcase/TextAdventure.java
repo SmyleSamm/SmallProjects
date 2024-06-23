@@ -1,6 +1,6 @@
-package src.showcase;
-import src.Helper;
-import src.Exception.IntInputException;
+package SmallProjects.showcase;
+import SmallProjects.Helper;
+import SmallProjects.Exception.IntInputException;
 
 public class TextAdventure {
     private static boolean running;

@@ -1,9 +1,9 @@
-package src;
+package SmallProjects;
 
 import java.io.*;
 import java.util.*;
 
-import src.Exception.IntInputException;
+import SmallProjects.Exception.IntInputException;
 
 public class Helper {
     public static String stringInput(){
@@ -16,14 +16,14 @@ public class Helper {
         try{
             ans = scan.nextInt();
         }catch(InputMismatchException e){
-            throw new src.Exception.IntInputException();
+            throw new SmallProjects.Exception.IntInputException();
         }
         return ans;
     }
     public static int intInputInRange(int minNumber, int maxNumber){
         Scanner scan = new Scanner(System.in);
         int ans=0;
-        IntInputException inputException = new src.Exception.IntInputException();
+        IntInputException inputException = new SmallProjects.Exception.IntInputException();
         try{
             try{
                 ans=scan.nextInt();

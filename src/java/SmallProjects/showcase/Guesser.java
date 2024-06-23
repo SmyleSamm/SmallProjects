@@ -1,7 +1,7 @@
-package src.showcase;
+package SmallProjects.showcase;
 
-import src.Helper;
-import src.Exception.IntInputException;
+import SmallProjects.Helper;
+import SmallProjects.Exception.IntInputException;
 
 public class Guesser {
     private static boolean running;

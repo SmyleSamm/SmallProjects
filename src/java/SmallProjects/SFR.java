@@ -1,4 +1,4 @@
-package src;
+package SmallProjects;
 import java.io.*;
 import java.util.*;
 import java.util.stream.*;
