@@ -21,6 +21,7 @@ public class TodoList {
         }
         System.out.println("0. Exit");
         //create if-Statement for correct user Input: 0 => Index -1!!!!!
+        //edit2: change to intInputInRange!!!!!!!!!
         int ans = 0;
         try{
             ans = Helper.intInput();
@@ -31,7 +32,7 @@ public class TodoList {
         }
         Helper.c();
         if(ans<=0&&ans<nameCon.length)
-            src.Main.start();
+            SmallProjects.Main.start();
         switch(nameCon[ans-1]){
             case "View":
                 view();
@@ -47,7 +48,7 @@ public class TodoList {
                 saveToFile();
                 break;
             default:
-                src.Main.start();
+                SmallProjects.Main.start();
                 break;
         }
     } 
@@ -66,6 +67,7 @@ public class TodoList {
         System.out.println("3. Rename task from Todo-List");
         System.out.println("0. Back");
         int ans = 0;
+        //edit2: change to intInputInRange!!!!!!!!!
         try{
             ans = Helper.intInput();
         }catch(IntInputException e){
@@ -101,9 +103,10 @@ public class TodoList {
         intro();
     }
     public static void remove(){
-        System.out.println("Name the index of the, to be removeble task.");
+        System.out.println("Name the index of the, to be removable task.");
         view();
         int ans = 0;
+        //edit2: change to intInputInRange!!!!!!!!!
         try{
             ans = Helper.intInput();
         }catch(IntInputException e){
@@ -122,6 +125,7 @@ public class TodoList {
         System.out.println("Name the index of the, to be renamed task.");
         view();
         int ansI = 0;
+        //edit2: change to intInputInRange!!!!!!!!!
         try{
             ansI = Helper.intInput();
         }catch(IntInputException e){
@@ -163,17 +167,12 @@ public class TodoList {
         return false;
     }
     public static void loadTodo(){
-        for(int i = 0; i < SFR.returnAmountInFolder(savePath); ++i)
+        for(int i = 0; i < SFR.returnAmountInFolder(savePath); ++i){
             System.out.println((i+1)+". ToDo-List is: "+SFR.returnFileNamesInDirectory(savePath)[i]);
+        }
         System.out.println("Choose your ToDo-List!\nEvery unsaved changes will be lost in your current ToDo-List!\nEnter 0. to Exit!");
         int ans = 0;
-        try{
-            ans = Helper.intInput();
-        }catch(IntInputException e){
-            Helper.c();
-            System.out.println(e);
-            loadTodo();
-        }
+        ans = Helper.intInputInRange(0, SFR.returnAmountInFolder(savePath));
         Helper.c();
         if(ans>=1)
             loadContentToCurrentSystem(SFR.returnFileNamesInDirectory(savePath)[ans-1]);
