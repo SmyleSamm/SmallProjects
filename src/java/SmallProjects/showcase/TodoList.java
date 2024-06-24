@@ -4,32 +4,23 @@ import java.io.*;
 
 import SmallProjects.Helper;
 import SmallProjects.SFR;
-import SmallProjects.Exception.IntInputException;
 
 public class TodoList {
     private static final String savePath = "user/save/Todo-List", todoExtension = ".txt";
     private static LinkedList<String> list = new LinkedList<String>();
+    private static String currentSaveFileName = null;
     public static void main(String[] args) {
         Helper.c();
         System.out.println("Welcome to the TodoList!");
         intro();
     }   
     public static void intro(){
-        String[] nameCon = {"View", "Edit", "Load", "Save"};
+        String[] nameCon = {"View", "Edit", "Load", "Save", "GetCurrentName"};
         for(int i = 1; i <= nameCon.length; ++i){
             System.out.println(i+". "+nameCon[i-1]+" Todo-List");
         }
         System.out.println("0. Exit");
-        //create if-Statement for correct user Input: 0 => Index -1!!!!!
-        //edit2: change to intInputInRange!!!!!!!!!
-        int ans = 0;
-        try{
-            ans = Helper.intInput();
-        }catch(IntInputException e){
-            Helper.c();
-            System.out.println(e);
-            intro();
-        }
+        int ans = Helper.intInputInRange(0, 5);
         Helper.c();
         if(ans<=0&&ans<nameCon.length)
             SmallProjects.Main.start();
@@ -47,11 +38,18 @@ public class TodoList {
             case "Save":
                 saveToFile();
                 break;
+            case "GetCurrentName":
+                getCurrentName();
+                break;
             default:
                 SmallProjects.Main.start();
                 break;
         }
     } 
+    static void getCurrentName(){
+        System.out.println("Current name:"+ currentSaveFileName);
+        intro();
+    }
     public static void view(){
         if(list.size()<=0)
             System.out.println("Your Todo-List is empty!");
@@ -70,15 +68,7 @@ public class TodoList {
         System.out.println("2. Remove task from Todo-List");
         System.out.println("3. Rename task from Todo-List");
         System.out.println("0. Back");
-        int ans = 0;
-        //edit2: change to intInputInRange!!!!!!!!!
-        try{
-            ans = Helper.intInput();
-        }catch(IntInputException e){
-            Helper.c();
-            System.out.println(e);
-            edit();
-        }
+        int ans = Helper.intInputInRange(0, 3);
         Helper.c();
         switch(ans){
             case 1:
@@ -109,15 +99,7 @@ public class TodoList {
     public static void remove(){
         System.out.println("Name the index of the, to be removable task.");
         view();
-        int ans = 0;
-        //edit2: change to intInputInRange!!!!!!!!!
-        try{
-            ans = Helper.intInput();
-        }catch(IntInputException e){
-            Helper.c();
-            System.out.println(e);
-            remove();
-        }
+        int ans = Helper.intInputInRange(1, list.size());
         Helper.c();
         if(ans>=0&&ans<list.size())
             list.remove(ans-1);
@@ -128,27 +110,33 @@ public class TodoList {
     public static void rename(){
         System.out.println("Name the index of the, to be renamed task.");
         view();
-        int ansI = 0;
-        //edit2: change to intInputInRange!!!!!!!!!
-        try{
-            ansI = Helper.intInput();
-        }catch(IntInputException e){
-            Helper.c();
-            System.out.println(e);
-            rename();
-        }
+        int ans = Helper.intInputInRange(1, list.size());
         Helper.c();
-        if(ansI<=0||ansI>list.size()){
-            System.out.println("No task found under the index of "+ansI);
+        if(ans<=0||ans>list.size()){
+            System.out.println("No task found under the index of "+ans);
             rename();
         }
         System.out.println("Now enter the new name of the task.");
         String ansS = Helper.stringInput();
-        list.set(ansI-1, ansS);
+        list.set(ans-1, ansS);
         Helper.c();
         edit();
     }
     public static void saveToFile(){
+        if(SFR.checkPath(savePath+"/"+currentSaveFileName+todoExtension)){
+            System.out.println("Replace current save File?");
+            System.out.println("1. Yes");
+            System.out.println("0. No");
+            int ans = Helper.intInputInRange(0, 1);
+            if(ans==1){
+                if(saveContent(savePath+"/"+currentSaveFileName+todoExtension))
+                    System.out.println("ToDo-List successfully saved!");
+                else
+                    System.out.println("Failed during saving Todo-List");
+                return;
+            }
+            //Helper.c();
+        }
         System.out.println("Enter Todo-List name:");
         String ans = Helper.stringInput();
         Helper.c();
@@ -160,6 +148,7 @@ public class TodoList {
             System.out.println("ToDo-List successfully saved!");
         else
             System.out.println("Failed during saving Todo-List");
+            currentSaveFileName = ans;
         intro();
     }
     private static boolean saveContent(String path){
@@ -183,6 +172,7 @@ public class TodoList {
         intro();
     }
     private static void loadContentToCurrentSystem(String todoName){
+        currentSaveFileName = todoName;
         list = new LinkedList<String>();
         String[] content = SFR.returnContentFromTextFile(savePath+"/"+todoName+todoExtension);
         for(int i = 0; i < content.length; ++i){
