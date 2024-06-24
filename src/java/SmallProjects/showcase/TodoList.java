@@ -124,32 +124,43 @@ public class TodoList {
     }
     public static void saveToFile(){
         if(SFR.checkPath(savePath+"/"+currentSaveFileName+todoExtension)){
-            System.out.println("Replace current save File?");
-            System.out.println("1. Yes");
-            System.out.println("0. No");
-            int ans = Helper.intInputInRange(0, 1);
-            if(ans==1){
-                if(saveContent(savePath+"/"+currentSaveFileName+todoExtension))
-                    System.out.println("ToDo-List successfully saved!");
-                else
-                    System.out.println("Failed during saving Todo-List");
-                return;
-            }
-            //Helper.c();
+            replaceCurrentFile();
         }
-        System.out.println("Enter Todo-List name:");
-        String ans = Helper.stringInput();
+        saveToNewFile();
+    }
+    public static void replaceCurrentFile(){
+        System.out.println("Replace current save File?\n1. Yes\n0. No");
+        int ans = Helper.intInputInRange(0, 1);
         Helper.c();
+        if(ans==1){
+            checkIfSavingWasSuccessful(savePath, currentSaveFileName, todoExtension);
+            intro();
+        }
+    }
+
+    public static void saveToNewFile(){
+        System.out.println("Enter Todo-List name:");
+        String newFileName = Helper.stringInput();
+        Helper.c();
+        checkExistingFileAndCreateIt(savePath, newFileName);
+        checkIfSavingWasSuccessful(savePath, newFileName, todoExtension);
+        currentSaveFileName = newFileName;
+        intro();
+    }
+
+    private static void checkExistingFileAndCreateIt(String filePath, String fileName){
         if(!SFR.checkPath(savePath)){
             SFR.createFolder(savePath);
         }
-        SFR.createFile(ans, savePath);
-        if(saveContent(savePath+"/"+ans+todoExtension))
+        SFR.createFile(fileName, savePath);
+    }
+    private static void checkIfSavingWasSuccessful(String filePath, String fileName, String fileExtension){
+        System.out.println(filePath+"/"+fileName+fileExtension);
+        if(saveContent(filePath+"/"+fileName+fileExtension)){
             System.out.println("ToDo-List successfully saved!");
-        else
+        }else{
             System.out.println("Failed during saving Todo-List");
-            currentSaveFileName = ans;
-        intro();
+        }
     }
     private static boolean saveContent(String path){
         File f = new File(path);
