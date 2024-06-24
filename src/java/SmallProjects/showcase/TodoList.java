@@ -15,12 +15,12 @@ public class TodoList {
         intro();
     }   
     public static void intro(){
-        String[] nameCon = {"View", "Edit", "Load", "Save", "GetCurrentName"};
+        String[] nameCon = {"View", "Edit", "Load", "Save"};
         for(int i = 1; i <= nameCon.length; ++i){
             System.out.println(i+". "+nameCon[i-1]+" Todo-List");
         }
         System.out.println("0. Exit");
-        int ans = Helper.intInputInRange(0, 5);
+        int ans = Helper.intInputInRange(0, 4);
         Helper.c();
         if(ans<=0&&ans<nameCon.length)
             SmallProjects.Main.start();
@@ -37,9 +37,6 @@ public class TodoList {
                 break;
             case "Save":
                 saveToFile();
-                break;
-            case "GetCurrentName":
-                getCurrentName();
                 break;
             default:
                 SmallProjects.Main.start();
