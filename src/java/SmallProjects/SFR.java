@@ -31,7 +31,7 @@ public class SFR
         try{
             new File(path+"/"+name+".txt").createNewFile();
         }catch(Exception e){
-
+            System.out.println("Failed critically during saving Todo-List");
         }
     }
     public static String[] returnContentFromTextFile(String path){
