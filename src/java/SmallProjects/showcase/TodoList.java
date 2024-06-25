@@ -15,7 +15,7 @@ public class TodoList {
         intro();
     }   
     public static void intro(){
-        String[] nameCon = {"View", "Edit", "Load", "Save"};
+        String[] nameCon = {"View", "Edit", "Load", "Save", "Encrypt", "Decrypt"};
         for(int i = 1; i <= nameCon.length; ++i){
             System.out.println(i+". "+nameCon[i-1]+" Todo-List");
         }
@@ -38,11 +38,27 @@ public class TodoList {
             case "Save":
                 saveToFile();
                 break;
+            case "Encrypt":
+                encrypt();
+                break;
+            case "Decrypt":
+                decrypt();
+                break;
             default:
                 SmallProjects.Main.start();
                 break;
         }
     } 
+    static void encrypt(){
+        
+        //encrypt
+        //use encryption with password
+    }
+    static void decrypt(){
+        //enter password
+        //decrypt
+        //open new decrypted File 
+    }
     static void getCurrentName(){
         System.out.println("Current name:"+ currentSaveFileName);
         intro();
