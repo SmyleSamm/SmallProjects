@@ -9,7 +9,7 @@ public class Security
     public static void main(String[] args){
         Helper.c();
         System.out.println("Welcome to Security!");
-        encrypt("user/save/Todo-List/Testy.txt");
+        encrypt("user/save/Todo-List/MyNewTodo.txt");
         decrypt("user/save/Todo-List/TestEnc.txt");
     }
     public static void encrypt(String file){
