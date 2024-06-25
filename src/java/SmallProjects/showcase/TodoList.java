@@ -50,11 +50,15 @@ public class TodoList {
         }
     } 
     static void encrypt(){
-        
+        System.out.println("Please enter your password.");
+        String password = Helper.stringInput();
         //encrypt
         //use encryption with password
     }
     static void decrypt(){
+        System.out.println("Please enter your password.");
+        String password = Helper.stringInput();
+        
         //enter password
         //decrypt
         //open new decrypted File 

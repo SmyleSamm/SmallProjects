@@ -33,7 +33,7 @@ public class Security
         
         
     }
-    public static void decrypt(String file){
+    public static void decrypt(String password, String file){
         String fileName = "TestDec";
         String filePath = "user/save/Todo-List";
         SFR.createFile(fileName, filePath);
