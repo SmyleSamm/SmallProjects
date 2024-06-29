@@ -47,6 +47,7 @@ def edit
 end
 
 def load
+    #add user Input to choose file
     file_data = File.read("user/save/Todo-List/MyNewTodo1.txt").split
     for a in 0..file_data.length-1
         @content[a] = file_data[a]
@@ -54,8 +55,9 @@ def load
 end
 
 def save
+    #add user Input to name the file
+    #introduce a system to replace files / save & save as new system
     File.write("user/save/Todo-List/MyNewTodo1.txt", @content.join("\n"))
-
 end
 
 def choseTodo(todo)
