@@ -6,11 +6,11 @@ public class Main
     public static final String showcaseClassPath = "SmallProjects.showcase.";
     public static void main(String[] args) {
         Helper.c();
-        System.out.println("Hello!\nThis is a program for many small projects of mine!\nAll of them are controlled via the console.\nHave fun, your Samm :]");
+        System.out.println("Hello!\nThis is a program for many small projects of mine!\nAll of them are controlled via the console.\nHave fun,\nYour Samm :]\n");
         start();
     }
     public static void start(){
-        printProgramms();
+        printPrograms();
         System.out.println("Enter the number of the desired application!");
         int ans = Helper.intInputInRange(0, SFR.returnAmountInFolder(showcasePath));
         if(ans>=1&&ans<=SFR.returnAmountInFolder(showcasePath)){
@@ -29,7 +29,7 @@ public class Main
         }
     }
     //it prints all the programs it can find in the showcase folder and then prints the exit thing... bro do not ask me xD
-    private static void printProgramms(){
+    private static void printPrograms(){
         String[] programs = SFR.returnFileNamesInDirectory(showcasePath);
         for(int i = 0; i < SFR.returnAmountInFolder(showcasePath); ++i){
             System.out.println((i+1)+". program is "+programs[i]);
