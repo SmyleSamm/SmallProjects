@@ -7,11 +7,13 @@ class User
         @user_addresse = addresse
     end
     
-    def login(name, addresse)
+    def self.login(name, addresse)
         if name == @user_name && addresse == @user_addresse
             puts "Logged-in successfully!"
+            return true 
         else
-            puts "Failed while logging in"
+            puts "Failed while logging in #{name} #{addresse}"
+            return false 
         end 
     end
 end
