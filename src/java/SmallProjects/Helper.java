@@ -50,9 +50,9 @@ public class Helper {
             e.printStackTrace();
         }
     }
-    public static void delay(int i){
+    public static void delay(int inMilliseconds){
         try{
-            Thread.sleep(i);
+            Thread.sleep(inMilliseconds);
         }catch(InterruptedException e){}
     }
 }

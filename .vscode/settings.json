@@ -61,5 +61,6 @@
   },
   "cSpell.words": [
     "Samm"
-  ]
+  ],
+  "java.debug.settings.onBuildFailureProceed": true
 }

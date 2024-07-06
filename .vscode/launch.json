@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Calculator",
+      "request": "launch",
+      "mainClass": "SmallProjects.showcase.Calculator",
+      "projectName": "SmallProjects_6367607e"
+    },
+    {
+      "type": "java",
       "name": "Main",
       "request": "launch",
       "mainClass": "SmallProjects.Main",

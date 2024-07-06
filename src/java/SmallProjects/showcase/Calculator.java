@@ -1,104 +1,68 @@
 package SmallProjects.showcase;
 
 import SmallProjects.Helper;
-import SmallProjects.Exception.IntInputException;
 
 public class Calculator {
-    private static boolean running;
-    private static double num1, num2;
+    private boolean running;
+    private double num1, num2;
     public static void main(String[] args) {
-        running=true;
         Helper.c();
         System.out.println("Welcome to the Calculator!");
-        loop();
+        new Calculator();
     }
-    public static void loop(){
+    public Calculator(){
+        this.running=true;
         while(running){
-            System.out.println("What do you want to calculate?\n1. Easy calculations(addition to division)\n0. Exit");
-            int ans = 0;
-            try{
-            ans = Helper.intInput();
-            }catch(IntInputException e){
-                Helper.c();
-                System.out.println(e);
-                loop();
-            }
+            askUserToEnterNumbers();
+            int calculationID = askUserWhatCalculationTheyWantToPerform();
             Helper.c();
-            switch (ans) {
-                case 1:
-                    easyCalculations();
-                    break;
-                case 0:
-                    running=false;
-                    break;
-                default:
-                    break;
-            }
+            double result = calculateTheResult(calculationID);
+            System.out.println("The result is: "+result);
+            Helper.delay(1000);
+            this.running = calculateAgain();
+            Helper.c();
         }
         System.out.println("Have a great day!");
-        src.Main.start();
+        SmallProjects.Main.start();
     }
-    private static void easyCalculations(){
-        System.out.println("What shall be the first number?");
-        num1=0;
-        try{
-            num1 = Helper.intInput();
-        }catch(IntInputException e){
-            Helper.c();
-            System.out.println(e);
-            easyCalculations();
-        }
+
+    private void askUserToEnterNumbers(){ 
+        System.out.println("Enter your first number!");
+        this.num1 = Helper.intInputInRange(Integer.MIN_VALUE, Integer.MAX_VALUE);
         Helper.c();
-        System.out.println("What shall be the second number?");
-        num2=0;
-        try{
-            num2 = Helper.intInput();
-        }catch(IntInputException e){
-            Helper.c();
-            System.out.println(e);
-            easyCalculations();
-        }
+        System.out.println("Enter your second number!");
+        this.num2 = Helper.intInputInRange(Integer.MIN_VALUE, Integer.MAX_VALUE);
         Helper.c();
-        System.out.println("What do you want to do?\n1. addition\n2. substraction\n3. multiplication\n4. division");
-        int ans = 0;
-        try{
-            ans = Helper.intInput();
-        }catch(IntInputException e){
-            Helper.c();
-            System.out.println(e);
-            easyCalculations();
-        }
-        Helper.c();
-        switch(ans){
+    }
+    private int askUserWhatCalculationTheyWantToPerform(){
+        System.out.println("Enter your preferred calculation method!");
+        System.out.println("1. Addition");
+        System.out.println("2. Subtraction");
+        System.out.println("3. Multiplication");
+        System.out.println("4. Division");
+        return Helper.intInputInRange(1, 4);
+    }
+    private double calculateTheResult(int calculationID){
+        switch(calculationID){
             case 1:
-                System.out.println("Your number is: "+addition());
-                break;
+                return this.num1 + this.num2;
             case 2:
-                System.out.println("Your number is: "+substraction());
-                break;
+                return this.num1 - this.num2;
             case 3:
-                System.out.println("Your number is: "+multiplication());
-                break;
+                return this.num1 * this.num2;
             case 4:
-                System.out.println("Your number is: "+division());
-                break;
+                if(num2==0)
+                    return 0;
+                return this.num1 / this.num2;
             default:
-                System.out.println("Invalid number!");
-                break;
+                System.out.println("Calculation not successful");
+                return -1;
         }
     }
-    private static double addition(){
-        return num1+num2;
-    }
-    private static double substraction(){
-        return num1-num2;
-    }
-    private static double multiplication(){
-        return num1*num2;
-    }
-    private static double division(){
-        if(num2==0)
-            return 0;
-        return num1/num2;
+    private boolean calculateAgain(){
+        System.out.println("Do you want to calculate something else?");
+        System.out.println("1. Yes");
+        System.out.println("0. No");
+        return Helper.intInputInRange(0, 1) == 1;
     }
 }
