@@ -16,7 +16,8 @@ public class Main
         if(ans>=1&&ans<=SFR.returnAmountInFolder(showcasePath)){
             choseApplication(SFR.returnFileNamesInDirectory(showcasePath)[ans-1]);
         }else{
-            //Helper.c();
+            Helper.c();
+            System.out.println("See you again soon!");
             System.exit(0);
         }
     }
@@ -27,7 +28,7 @@ public class Main
             System.out.println(e);
         }
     }
-    //it prints all the programms it can find in the showcase folder and then prints the exit thing... bro dont ask me xD
+    //it prints all the programs it can find in the showcase folder and then prints the exit thing... bro do not ask me xD
     private static void printProgramms(){
         String[] programs = SFR.returnFileNamesInDirectory(showcasePath);
         for(int i = 0; i < SFR.returnAmountInFolder(showcasePath); ++i){
