@@ -12,7 +12,7 @@ public class Main
     public static void start(){
         printProgramms();
         System.out.println("Enter the number of the desired application!");
-        int ans = Helper.intInputInRange(0, 5) - 1;
+        int ans = Helper.intInputInRange(0, SFR.returnAmountInFolder(showcasePath)) - 1;
         if(ans>=1&&ans<=SFR.returnAmountInFolder(showcasePath)){
             choseApplication(SFR.returnFileNamesInDirectory(showcasePath)[ans]);
         }else{
