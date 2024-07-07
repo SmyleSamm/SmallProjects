@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "TextAdventure",
+      "request": "launch",
+      "mainClass": "SmallProjects.showcase.TextAdventure",
+      "projectName": "SmallProjects_51bfdcaa"
+    },
+    {
+      "type": "java",
       "name": "Guesser",
       "request": "launch",
       "mainClass": "SmallProjects.showcase.Guesser",
