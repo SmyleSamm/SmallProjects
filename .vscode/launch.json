@@ -3,6 +3,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Guesser",
+      "request": "launch",
+      "mainClass": "SmallProjects.showcase.Guesser",
+      "projectName": "SmallProjects_51bfdcaa"
+    },
+    {
+      "type": "java",
+      "name": "Calculator",
+      "request": "launch",
+      "mainClass": "SmallProjects.showcase.Calculator",
+      "projectName": "SmallProjects_51bfdcaa"
+    },
+    {
+      "type": "java",
       "name": "TodoList",
       "request": "launch",
       "mainClass": "SmallProjects.showcase.TodoList",

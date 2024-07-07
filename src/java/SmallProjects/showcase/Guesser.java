@@ -4,60 +4,55 @@ import SmallProjects.Helper;
 import SmallProjects.Exception.IntInputException;
 
 public class Guesser {
-    private static boolean running;
-    private static int won, loss;
+    private boolean running;
+    private int won, loss, num1, num2;
     public static void main(String[] args) {
-        running=true;
-        won=0;
-        loss=0;
         Helper.c();
         System.out.println("Welcome to the Guesser!");
-        loop();
+        new Guesser();
     }
-    private static void loop(){
-        while(running){
-            System.out.println("Enter the maximum number!\n0 interupts the programm!");
-            int ans = 0;
-            try{
-            ans = Helper.intInput();
-        }catch(IntInputException e){
-            Helper.c();
-            System.out.println(e);
-            loop();
-        }
-            Helper.c();
-            if(ans==0){
-                running=false;
-                break;
-            }
-            int l = new java.util.Random().nextInt(ans+1);
-            System.out.println("Your number is between and not includes 0 and "+(ans+1)+"! What number do you think it is?");
-            int answer = 0;
-            try{
-                ans = Helper.intInput();
-            }catch(IntInputException e){
-                Helper.c();
-                System.out.println(e);
-                loop();
-            }
-            Helper.c();
-            if(answer==l){
-                System.out.println("You guessed correctly!");
-                ++won;
-            }
-            else{
-                System.out.println("You did not guess correctly T.T\nThe number was "+l);
-                ++loss;
-            }
-            System.out.println("You have guessed "+won+" numbers correctly and "+loss+" numbers incorrectly!");
-            try{
-                Thread.sleep(1000);
-            }catch(InterruptedException e){
-
-            }
-        }
+    public Guesser(){
+        this.running=true;
+        this.won=0;
+        this.loss=0;
+        loop();
         Helper.c();
-        System.out.println("Have a great day!");
-        src.Main.start();
+        System.out.println("Have a greate day!");
+        SmallProjects.Main.start();
+    }
+    private void loop(){
+        while(running){
+            int maxNumbers = askMaxNumbers();
+            System.out.println("The random number is between 0 and "+maxNumbers);
+            int playerGuess = letThePlayerGuess(maxNumbers);
+            checkIfPlayerGuessedCorrectls(playerGuess, maxNumbers);
+            this.running = playAgain();
+        }
+    }
+    private int askMaxNumbers(){
+        Helper.c();
+        System.out.println("Choose the maximum numbers you want!");
+        return Helper.intInputInRange(2, Integer.MAX_VALUE);
+    }
+    private int letThePlayerGuess(int maxValue){
+        Helper.c();
+        System.out.println("Please enter a number you think is the correct number!");
+        return Helper.intInputInRange(0, maxValue);
+    }
+    private void checkIfPlayerGuessedCorrectls(int playerGuess, int maxValue){
+        int num = new java.util.Random().nextInt(maxValue);
+        Helper.c();
+        if(playerGuess == num){
+            System.out.println("You guessed correctly!");
+        }else{
+            System.out.println("Your guessed incorrectly :(");
+            System.out.println("The correct number was: "+num);
+        }
+    }
+    private boolean playAgain(){
+        System.out.println("Do you want to play again?");
+        System.out.println("1. Yes");
+        System.out.println("0. No");
+        return Helper.intInputInRange(0, 1) == 1;
     }
 }
