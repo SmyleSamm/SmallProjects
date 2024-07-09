@@ -172,7 +172,6 @@ public class TodoList {
         SFR.createFile(fileName, savePath);
     }
     private static void checkIfSavingWasSuccessful(String filePath, String fileName, String fileExtension){
-        System.out.println(filePath+"/"+fileName+fileExtension);
         if(saveContent(filePath+"/"+fileName+fileExtension)){
             System.out.println("ToDo-List successfully saved!");
         }else{
