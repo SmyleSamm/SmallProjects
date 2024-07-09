@@ -50,9 +50,23 @@ public class Helper {
             e.printStackTrace();
         }
     }
-    public static void delay(int inMilliseconds){
+    public static void delay(long inMilliseconds){
         try{
             Thread.sleep(inMilliseconds);
         }catch(InterruptedException e){}
+    }
+    public static void defaultSlowPrint(String str){
+        String[] text = str.split("");
+        for(int i = 0; i < text.length; ++i){
+            System.out.print(text[i]);
+            Helper.delay(50);
+        }
+    }
+    public static void slowPrint(String str, long delayInMilli){
+        String[] text = str.split("");
+        for(int i = 0; i < text.length; ++i){
+            System.out.print(text[i]);
+            Helper.delay(delayInMilli);
+        }
     }
 }
