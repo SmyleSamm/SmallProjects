@@ -7,20 +7,12 @@ import SmallProjects.Exception.IntInputException;
 
 public class Helper {
     public static String stringInput(){
+        @SuppressWarnings("resource")
         Scanner scan = new Scanner(System.in);
         return scan.nextLine();
     }
-    public static int intInput() throws IntInputException{
-        int ans=0;
-        Scanner scan = new java.util.Scanner(System.in);
-        try{
-            ans = scan.nextInt();
-        }catch(InputMismatchException e){
-            throw new SmallProjects.Exception.IntInputException();
-        }
-        return ans;
-    }
     public static int intInputInRange(int minNumber, int maxNumber){
+        @SuppressWarnings("resource")
         Scanner scan = new Scanner(System.in);
         int ans=0;
         IntInputException inputException = new SmallProjects.Exception.IntInputException();
