@@ -1,0 +1,7 @@
+Captain: "What are you guys doing?|
+    Get of the canones!"|
+*Boom*||
+{delay(1500)}
+You awake on a beach.|
+Next to you is debrie.|
+Wooden debrie. Like from a ship.|

@@ -1,6 +1,5 @@
 package SmallProjects.showcase;
 import SmallProjects.Helper;
-import SmallProjects.Exception.IntInputException;
 
 public class TextAdventure {
     private static boolean running;
@@ -12,11 +11,46 @@ public class TextAdventure {
     }
     public static class Player
     {
+        public static class Inventory
+        {
+            public static class InventoryItem
+            {
+                String name;
+                String description;
+                int weight;
+                int size;
+                InventoryItem(){
+                    this.name = null;
+                    this.description = null;
+                    this.weight = 0;
+                    this.size = 0;
+                }
+                InventoryItem(String name, String description, int weight, int size){
+                    this.name = name;
+                    this.description = description;
+                    this.weight = weight;
+                    this.size = size;
+                }
+            }
+            InventoryItem[] items;
+            Inventory(){
+                this.items = new InventoryItem[0];
+            }
+            Inventory(InventoryItem[] items){
+                this.items = items;
+            }
+        }
         String name;
         int carisma; 
+        Inventory playerInventory;
         Player(){
             this.name = null;
             this.carisma = 0;
+        }
+        Player(String name, int carisma, Inventory playerInventory){
+            this.name = name;
+            this.carisma = carisma;
+            this.playerInventory = playerInventory;
         }
         public String getName(){return this.name;}
         public void setName(String name){this.name = name;}

@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "TodoList",
+      "request": "launch",
+      "mainClass": "SmallProjects.showcase.TodoList",
+      "projectName": "SmallProjects_51bfdcaa"
+    },
+    {
+      "type": "java",
       "name": "TextAdventure",
       "request": "launch",
       "mainClass": "SmallProjects.showcase.TextAdventure",
