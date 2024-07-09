@@ -11,8 +11,33 @@ public class TextAdventure {
     }
     public static class Player
     {
+        String name;
+        int carisma; 
+        Inventory playerInventory;
+        Player(){
+            this.name = null;
+            this.carisma = 0;
+        }
+        Player(String name, int carisma, Inventory playerInventory){
+            this.name = name;
+            this.carisma = carisma;
+            this.playerInventory = playerInventory;
+        }
+        public String getName(){return this.name;}
+        public void setName(String name){this.name = name;}
+        public int getCarisma(){return this.carisma;}
+        public void setCarisma(int carisma){this.carisma = carisma;}
+
         public static class Inventory
         {
+            InventoryItem[] items;
+            Inventory(){
+                this.items = new InventoryItem[0];
+            }
+            Inventory(InventoryItem[] items){
+                this.items = items;
+            }
+            
             public static class InventoryItem
             {
                 String name;
@@ -32,30 +57,7 @@ public class TextAdventure {
                     this.size = size;
                 }
             }
-            InventoryItem[] items;
-            Inventory(){
-                this.items = new InventoryItem[0];
-            }
-            Inventory(InventoryItem[] items){
-                this.items = items;
-            }
         }
-        String name;
-        int carisma; 
-        Inventory playerInventory;
-        Player(){
-            this.name = null;
-            this.carisma = 0;
-        }
-        Player(String name, int carisma, Inventory playerInventory){
-            this.name = name;
-            this.carisma = carisma;
-            this.playerInventory = playerInventory;
-        }
-        public String getName(){return this.name;}
-        public void setName(String name){this.name = name;}
-        public int getCarisma(){return this.carisma;}
-        public void setCarisma(int carisma){this.carisma = carisma;}
     }
     public static class NPC
     {
