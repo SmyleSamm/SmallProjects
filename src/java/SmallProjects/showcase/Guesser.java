@@ -1,11 +1,10 @@
 package SmallProjects.showcase;
 
 import SmallProjects.Helper;
-import SmallProjects.Exception.IntInputException;
 
 public class Guesser {
     private boolean running;
-    private int won, loss, num1, num2;
+    private int won, loss;
     public static void main(String[] args) {
         Helper.c();
         System.out.println("Welcome to the Guesser!");
@@ -26,6 +25,7 @@ public class Guesser {
             System.out.println("The random number is between 0 and "+maxNumbers);
             int playerGuess = letThePlayerGuess(maxNumbers);
             checkIfPlayerGuessedCorrectls(playerGuess, maxNumbers);
+            printStatistics();
             this.running = playAgain();
         }
     }
@@ -44,10 +44,19 @@ public class Guesser {
         Helper.c();
         if(playerGuess == num){
             System.out.println("You guessed correctly!");
+            this.won++;
         }else{
             System.out.println("Your guessed incorrectly :(");
             System.out.println("The correct number was: "+num);
+            this.loss++;
         }
+    }
+    private void printStatistics(){
+        Helper.c();
+        System.out.println("Statistics:");
+        System.out.println("Won: "+this.won);
+        System.out.println("Loss: "+this.loss);
+        System.out.println("Percentage of wins: "+((double)((double)this.won/(double)(this.won+this.loss))*100)+"%");
     }
     private boolean playAgain(){
         System.out.println("Do you want to play again?");
