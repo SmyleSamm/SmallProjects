@@ -17,8 +17,20 @@ public class SFR
               .filter(file -> !file.isDirectory())
               .map(File::getName).collect(Collectors.toList());
     }
-    public static int returnAmountInFolder(String folderPath){
+    public static List<String> returnDirectoriesInFolder(String folderPath){
+        return Stream.of(new File(folderPath).listFiles())
+            .filter(File::isDirectory)
+            .map(File::getName)
+            .collect(Collectors.toList());
+    }
+    public static int returnFileAmountInFolder(String folderPath){
         return returnFilesInFolder(folderPath).size();
+    }
+    public static int returnDirectoryAmountInFolder(String folderPath){
+        return returnDirectoriesInFolder(folderPath).size();
+    }
+    public static int returnTotalAmountInFolder(String folderPath){
+        return returnFileAmountInFolder(folderPath) + returnDirectoryAmountInFolder(folderPath);
     }
     public static boolean checkPath(String path){
         File f = new File(path);
@@ -64,8 +76,8 @@ public class SFR
         }
     }
     public static String[] returnFileNamesInDirectory(String path){
-        String[] name = new String[returnAmountInFolder(path)];
-        for(int i = 0; i < returnAmountInFolder(path); ++i){
+        String[] name = new String[returnFileAmountInFolder(path)];
+        for(int i = 0; i < returnFileAmountInFolder(path); ++i){
             String names = returnFilesInFolder(path).get(i);
             name[i] = names.split("\\.")[0];
         }

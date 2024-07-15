@@ -3,9 +3,14 @@ package SmallProjects;
 import java.io.*;
 import java.util.*;
 
-import SmallProjects.Exception.IntInputException;
-
 public class Helper {
+    public static class IntInputException extends Exception{
+        public IntInputException(){
+            super("Invalid Input!\nOnly numbers are accepted!");
+        }
+    }
+
+
     public static String stringInput(){
         @SuppressWarnings("resource")
         Scanner scan = new Scanner(System.in);
@@ -15,7 +20,7 @@ public class Helper {
         @SuppressWarnings("resource")
         Scanner scan = new Scanner(System.in);
         int ans=0;
-        IntInputException inputException = new SmallProjects.Exception.IntInputException();
+        IntInputException inputException = new IntInputException();
         try{
             try{
                 ans=scan.nextInt();

@@ -187,12 +187,12 @@ public class TodoList {
         return false;
     }
     public static void loadTodo(){
-        for(int i = 0; i < SFR.returnAmountInFolder(savePath); ++i){
+        for(int i = 0; i < SFR.returnFileAmountInFolder(savePath); ++i){
             System.out.println((i+1)+". ToDo-List is: "+SFR.returnFileNamesInDirectory(savePath)[i]);
         }
         System.out.println("Choose your ToDo-List!\nEvery unsaved changes will be lost in your current ToDo-List!\nEnter 0. to Exit!");
         int ans = 0;
-        ans = Helper.intInputInRange(0, SFR.returnAmountInFolder(savePath));
+        ans = Helper.intInputInRange(0, SFR.returnFileAmountInFolder(savePath));
         Helper.c();
         if(ans>=1)
             loadContentToCurrentSystem(SFR.returnFileNamesInDirectory(savePath)[ans-1]);
