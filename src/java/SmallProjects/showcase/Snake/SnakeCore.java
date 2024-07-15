@@ -1,12 +1,13 @@
 package SmallProjects.showcase.Snake;
 import SmallProjects.Helper;
-public class SnakeGame {
+public class SnakeCore {
     public static void main(String[] args) {
         Helper.c();
         System.out.println("Welcome To Snake");
-        new SnakeGame();
+        new SnakeCore();
     }
-    public SnakeGame(){
+    public SnakeCore(){
         
     }
+    //Add core elements for a Snake game (display not included! only backend!)
 }
