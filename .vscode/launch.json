@@ -3,6 +3,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "TextAdventure",
+      "request": "launch",
+      "mainClass": "SmallProjects.showcase.TextAdventure.TextAdventure",
+      "projectName": "SmallProjects_6367607e"
+    },
+    {
+      "type": "java",
+      "name": "Npc",
+      "request": "launch",
+      "mainClass": "SmallProjects.showcase.TextAdventure.Npc",
+      "projectName": "SmallProjects_6367607e"
+    },
+    {
+      "type": "java",
       "name": "TodoList",
       "request": "launch",
       "mainClass": "SmallProjects.showcase.TodoList",
