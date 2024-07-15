@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Test",
+      "request": "launch",
+      "mainClass": "SmallProjects.Exception.Test",
+      "projectName": "SmallProjects_6367607e"
+    },
+    {
+      "type": "java",
       "name": "TextAdventure",
       "request": "launch",
       "mainClass": "SmallProjects.showcase.TextAdventure.TextAdventure",
