@@ -30,17 +30,10 @@ public class Main
     }
     //it prints all the programs it can find in the showcase folder and then prints the exit thing... bro do not ask me xD
     private static void printPrograms(){
-        String[] programs = SFR.returnFileNamesWithoutExtensionInDirectory(showcasePath);
-        for(int i = 0; i < SFR.returnFileAmountInFolder(showcasePath); ++i){
+        String[] programs = Helper.combineArrays(SFR.returnFileNamesWithoutExtensionInDirectory(showcasePath), SFR.returnDirectoriesInFolder(showcasePath));
+        for(int i = 0; i < programs.length; ++i){
             System.out.println((i+1)+". program is "+programs[i]);
         }
         System.out.println("0. Exit");
-    }
-    //private static void printInDirectoryPrograms(){
-        //String[] programs = SFR.
-    //}
-    private static void printInDirectoryPrograms(){
-        String[] directories = SFR.returnDirectoriesInFolder(showcaseClassPath);
-
     }
 }
