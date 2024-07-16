@@ -9,25 +9,26 @@ public class SFR
 
     }
     public static void main(String[] args) {
-        System.out.println(returnFilesInFolder("./src/java/SmallProjects/showcase/").size());
+        System.out.println(returnFilesInFolder("./src/java/SmallProjects/showcase/").length);
         System.out.println(checkPath("src/java/SmallProjects/showcase"));
     }
-    public static List<String> returnFilesInFolder(String folderPath){
+    public static String[] returnFilesInFolder(String folderPath){
         return Stream.of(new File(folderPath).listFiles())
               .filter(file -> !file.isDirectory())
-              .map(File::getName).collect(Collectors.toList());
+              .map(File::getName)
+              .toArray(String[]::new);
     }
-    public static List<String> returnDirectoriesInFolder(String folderPath){
+    public static String[] returnDirectoriesInFolder(String folderPath){
         return Stream.of(new File(folderPath).listFiles())
             .filter(File::isDirectory)
             .map(File::getName)
-            .collect(Collectors.toList());
+            .toArray(String[]::new);
     }
     public static int returnFileAmountInFolder(String folderPath){
-        return returnFilesInFolder(folderPath).size();
+        return returnFilesInFolder(folderPath).length;
     }
     public static int returnDirectoryAmountInFolder(String folderPath){
-        return returnDirectoriesInFolder(folderPath).size();
+        return returnDirectoriesInFolder(folderPath).length;
     }
     public static int returnTotalAmountInFolder(String folderPath){
         return returnFileAmountInFolder(folderPath) + returnDirectoryAmountInFolder(folderPath);
@@ -75,11 +76,10 @@ public class SFR
             System.err.println("Error writing content to file: "+e.getMessage());
         }
     }
-    public static String[] returnFileNamesInDirectory(String path){
-        String[] name = new String[returnFileAmountInFolder(path)];
-        for(int i = 0; i < returnFileAmountInFolder(path); ++i){
-            String names = returnFilesInFolder(path).get(i);
-            name[i] = names.split("\\.")[0];
+    public static String[] returnFileNamesWithoutExtensionInDirectory(String path){
+        String[] name = returnFilesInFolder(path);
+        for(int i = 0; i < name.length; i++){
+            name[i] = name[i].split("\\.")[0];
         }
         return name;
     }
