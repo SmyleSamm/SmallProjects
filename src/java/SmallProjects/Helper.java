@@ -1,7 +1,9 @@
 package SmallProjects;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Helper {
     public static class IntInputException extends Exception{
@@ -65,5 +67,10 @@ public class Helper {
             System.out.print(text[i]);
             Helper.delay(delayInMilli);
         }
+    }
+    public static <T> T[] combineArrays(T[]... ar){
+        return Stream.of(ar)
+            .flatMap(Stream::of)
+            .toArray(size -> (T[]) Array.newInstance(ar[0].getClass().getComponentType(), size));
     }
 }
