@@ -68,6 +68,8 @@ public class Helper {
             Helper.delay(delayInMilli);
         }
     }
+    @SafeVarargs
+    @SuppressWarnings("unchecked")
     public static <T> T[] combineArrays(T[]... ar){
         return Stream.of(ar)
             .flatMap(Stream::of)
