@@ -22,8 +22,10 @@ public class TodoList {
         System.out.println("0. Exit");
         int ans = Helper.intInputInRange(0, 4);
         Helper.c();
-        if(ans<=0&&ans<nameCon.length)
+        if(ans==0){
             SmallProjects.Main.start();
+            return;
+        }
         switch(nameCon[ans-1]){
             case "View":
                 view();
@@ -45,7 +47,7 @@ public class TodoList {
                 decrypt();
                 break;
             default:
-                SmallProjects.Main.start();
+                System.out.println("Critical todo error!");
                 break;
         }
     } 
