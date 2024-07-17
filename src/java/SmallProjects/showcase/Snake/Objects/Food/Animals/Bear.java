@@ -1,9 +1,9 @@
 package SmallProjects.showcase.Snake.Objects.Food.Animals;
 
-public class Fish extends SmallProjects.showcase.Snake.Objects.Food.AbstractFood{
-    Fish(){
+public class Bear extends SmallProjects.showcase.Snake.Objects.Food.AbstractFood{
+    Bear(){
         this.foodQuality = new java.util.Random().nextInt(400) + 100;
-        this.name = "Fish";
+        this.name = "Bear";
         //Image manipulation?
     }
 }
