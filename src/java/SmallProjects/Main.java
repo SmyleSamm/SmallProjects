@@ -1,7 +1,5 @@
 package SmallProjects;
 
-import java.lang.reflect.InvocationTargetException;
-
 public class Main
 {
     public static final String showcasePath = "./src/java/SmallProjects/showcase";
@@ -23,7 +21,6 @@ public class Main
             System.exit(0);
         }else{
             if(ans <= SFR.returnFileAmountInFolder(showcasePath)){
-                System.out.println("I am the Imposter! 1");
                 choseApplication(programs[ans-1]);
             }else{
             }
@@ -33,24 +30,11 @@ public class Main
         
     }
     public static void choseApplication(String app){
-        
-            System.out.println("I am the Imposter! 3");
-            try {
-                Class.forName(showcaseClassPath+app).getMethod("main", String[].class).invoke(null, (Object)null);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (IllegalArgumentException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            } catch (SecurityException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        
+        try {
+            Class.forName(showcaseClassPath+app).getMethod("main", String[].class).invoke(null, (Object)null);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     //it prints all the programs it can find in the showcase folder and then prints the exit thing... bro do not ask me xD
     private static void printPrograms(){
