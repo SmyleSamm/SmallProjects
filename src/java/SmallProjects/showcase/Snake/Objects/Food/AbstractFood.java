@@ -1,6 +1,8 @@
 package SmallProjects.showcase.Snake.Objects.Food;
 
-public abstract class AbstractFood
+import SmallProjects.showcase.Snake.Objects.*;
+
+public abstract class AbstractFood extends AbstractObject
 {
     protected int foodQuality;
     protected String name;
