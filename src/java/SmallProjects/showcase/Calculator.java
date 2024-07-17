@@ -24,6 +24,7 @@ public class Calculator {
         }
         System.out.println("Have a great day!");
         SmallProjects.Main.start();
+        return;
     }
 
     private void askUserToEnterNumbers(){ 

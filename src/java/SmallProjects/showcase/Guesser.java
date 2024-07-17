@@ -16,15 +16,16 @@ public class Guesser {
         this.loss=0;
         loop();
         Helper.c();
-        System.out.println("Have a greate day!");
+        System.out.println("Have a great day!");
         SmallProjects.Main.start();
+        return;
     }
     private void loop(){
         while(running){
             int maxNumbers = askMaxNumbers();
             System.out.println("The random number is between 0 and "+maxNumbers);
             int playerGuess = letThePlayerGuess(maxNumbers);
-            checkIfPlayerGuessedCorrectls(playerGuess, maxNumbers);
+            checkIfPlayerGuessedCorrect(playerGuess, maxNumbers);
             printStatistics();
             this.running = playAgain();
         }
@@ -39,7 +40,7 @@ public class Guesser {
         System.out.println("Please enter a number you think is the correct number!");
         return Helper.intInputInRange(0, maxValue);
     }
-    private void checkIfPlayerGuessedCorrectls(int playerGuess, int maxValue){
+    private void checkIfPlayerGuessedCorrect(int playerGuess, int maxValue){
         int num = new java.util.Random().nextInt(maxValue);
         Helper.c();
         if(playerGuess == num){
