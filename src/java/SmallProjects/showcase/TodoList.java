@@ -23,7 +23,6 @@ public class TodoList {
         int ans = Helper.intInputInRange(0, 4);
         Helper.c();
         if(ans==0){
-            SmallProjects.Main.start();
             return;
         }
         switch(nameCon[ans-1]){

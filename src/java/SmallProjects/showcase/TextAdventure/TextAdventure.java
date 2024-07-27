@@ -27,7 +27,6 @@ public class TextAdventure {
         }
         Helper.c();
         System.out.println("See you again soon!");
-        SmallProjects.Main.start();
         return;
     }
 }
