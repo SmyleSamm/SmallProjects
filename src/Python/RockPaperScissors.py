@@ -30,7 +30,7 @@ computerChoice = randint(0,2)
 
 for i in range(len(list)):
     print(f"{i}. {list[i]}")
-userChoice = input("Choose what you want to use!")
+userChoice = int(input("Choose what you want to use!"))
 #userChoice = randint(0,2)
 
 print(f"You chose the {list[userChoice]}")
