@@ -35,7 +35,7 @@ def getYoutubeData(accessData: str):
         return "an error occurred or channel not found!"
     
 def getTwitchData(accessData: str):
-    return "WIP"
+    return "{this action is WIP}"
 
 def getGithubData(accessData: str):
     github = f"https://api.github.com/users/SmyleSamm/{accessData}"
