@@ -23,16 +23,23 @@ async def hello(ctx):
     await ctx.send(f"Hello {ctx.author.mention}!")
 
 @bot.command()
-async def social(ctx):
-    #Links of my socials
-    github = "[GitHub](https://github.com/SmyleSamm)"
-    steam = "[Steam](https://steamcommunity.com/id/SmyleSamm/)"
-    ttv = "[Twitch](https://www.twitch.tv/smyle_samm)"
-
-    #sending links to the user
-    await ctx.send(github)
-    await ctx.send(steam)
-    await ctx.send(ttv)
+async def social(ctx, platform: str = None):
+    if platform is not None:
+        platform = platform.lower()
+    social={
+        "github": "https://github.com/SmyleSamm",
+        "steam": "https://steamcommunity.com/id/SmyleSamm/",
+        "twitch": "https://www.twitch.tv/smyle_samm"
+    }
+    if platform is None:
+        for name, link in social.items():
+            await ctx.send(f"[{name.capitalize()}]({link})")
+    else:
+        if platform in social:
+            await ctx.send(f"Here is the link to my [{platform}]({social[platform]})")
+        else:
+            await ctx.send("I am sorry, but I dont linked my {platform}.\n"
+                       "You can see all my socials with !social")
 
 def help_embed():
     embed = discord.Embed(title="Help Menu", color=discord.Color.pink())
