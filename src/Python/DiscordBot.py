@@ -8,7 +8,7 @@ import config
 #importing secure bot_details
 BOT_TOKEN = config.BOT_TOKEN1()
 CHANNEL_ID = config.CHANNEL_ID()
-GUILD_ID = config.GUILD_ID
+GUILD_ID = config.GUILD_ID()
 
 #setting-up bot
 intents = discord.Intents.all() 
@@ -22,7 +22,7 @@ async def hello(ctx):
 
 @bot.tree.command(name="help")
 async def help(interaction: discord.Interaction):
-    await interaction.response.send_message(f"Hello {interaction.user.mention}!\n"
+    await interaction.response.send_message(f"Hello {interaction.user.mention}!\n\n"
         "!hello: Say hello to the bot, he will say hello back to you!\n"
         "/help: Open the help menu, just like you did right now!", 
         ephemeral=True)
@@ -32,7 +32,8 @@ async def on_ready():
     print(f"{bot.user} is live!")
     try:
         synced = await bot.tree.sync()
-        print(f"Synced {len(synced)} commands!")
+        for x in synced:
+            print(f"{x} synced")
     except Exception as e:
         print(e)
 
