@@ -163,6 +163,3 @@ async def on_ready():
         print(e)
 
 bot.run(BOT_TOKEN)
-
-git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
