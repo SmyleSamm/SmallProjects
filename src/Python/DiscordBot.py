@@ -3,7 +3,8 @@ import discord.ext
 from discord.ext import commands
 import sys
 import requests
-sys.path.append("D:\\")
+#sys.path.append("D:\\") #For PC
+sys.path.append("/home/Sammy/Coding") #For Linux
 import config 
 
 #importing secure bot_details
@@ -162,3 +163,6 @@ async def on_ready():
         print(e)
 
 bot.run(BOT_TOKEN)
+
+git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
