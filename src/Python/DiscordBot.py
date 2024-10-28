@@ -68,15 +68,12 @@ def getYoutubeData(accessData: str):
         return "an error occurred or channel not found!"
 
 def getTwitchData(accessData: str):
-    #return "{this action is WIP}"
-    twitch = f"https://api.twitch.tv/helix/users/follows?to_id={config.TWITCH_USER_ID("smyle_samm")}"
+    twitch = f"https://api.twitch.tv/helix/channels/{accessData}?broadcaster_id={config.TWITCH_USER_ID("smyle_samm")}"
     headers = {
-        "Client-ID": config.TWITCH_CLIENT_ID(),
-        "Authorization": f"Bearer {config.GET_TWITCH_OAUTH_TOKEN()}"
+        "Authorization": f"Bearer {config.GET_TWITCH_OAUTH_TOKEN()}",
+        "Client-ID": config.TWITCH_CLIENT_ID()
     }
     response = requests.get(twitch, headers = headers)
-    print(response)
-
     if response.status_code == 200:
         data = response.json()
         return data["total"]
@@ -110,7 +107,7 @@ async def social(ctx, platform: str = None, action: str = None):
         "github": {"followers": getGithubData("followers"),
                    "following": getGithubData("following")},
         "steam": {},
-        "twitch": {"followers": getTwitchData("")},
+        "twitch": {"followers": getTwitchData("followers")},
         "youtube": {"followers": getYoutubeData("subscriberCount"),
                     "views": getYoutubeData("viewCount"),
                     "videos": getYoutubeData("videoCount")}
