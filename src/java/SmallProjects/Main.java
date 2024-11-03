@@ -1,7 +1,5 @@
 package SmallProjects;
 
-import java.lang.reflect.InvocationTargetException;
-
 public class Main
 {
     public static final String showcasePath = "./src/java/SmallProjects/showcase";
