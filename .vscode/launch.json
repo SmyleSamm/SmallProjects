@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Test",
+      "request": "launch",
+      "mainClass": "SmallProjects.showcase.Test.Test",
+      "projectName": "SmallProjects_6367607e"
+    },
+    {
+      "type": "java",
       "name": "Snake",
       "request": "launch",
       "mainClass": "SmallProjects.showcase.Snake.Snake",
