@@ -3,8 +3,8 @@ import discord.ext
 from discord.ext import commands
 import sys
 import requests
-#sys.path.append("D:\\") #For PC
-sys.path.append("/home/Sammy/Coding") #For Linux
+sys.path.append("E:\\") #For PC
+#sys.path.append("/home/Sammy/Coding") #For Linux
 import config 
 
 #importing secure bot_details
@@ -88,51 +88,55 @@ def getGithubData(accessData: str):
 
     return len(data)
 
+social={
+    "github": "https://github.com/SmyleSamm",
+    "steam": "https://steamcommunity.com/id/SmyleSamm/",
+    "twitch": "https://www.twitch.tv/smyle_samm",
+    "youtube": "https://www.youtube.com/@smyle_samm1372"
+}
+
+actions={
+    "github": {"followers": getGithubData("followers"),
+        "following": getGithubData("following")},
+    "steam": {},
+    "twitch": {"followers": getTwitchData("followers")},
+    "youtube": {"followers": getYoutubeData("subscriberCount"),
+        "views": getYoutubeData("viewCount"),
+        "videos": getYoutubeData("videoCount")}
+}
+
 @bot.command()
 async def social(ctx, platform: str = None, action: str = None):
-
+    print("social beginning")
     if platform is not None:
         platform = platform.lower()
     if action is not None:
         action = action.lower()
 
-    social={
-        "github": "https://github.com/SmyleSamm",
-        "steam": "https://steamcommunity.com/id/SmyleSamm/",
-        "twitch": "https://www.twitch.tv/smyle_samm",
-        "youtube": "https://www.youtube.com/@smyle_samm1372"
-    }
-
-    actions={
-        "github": {"followers": getGithubData("followers"),
-                   "following": getGithubData("following")},
-        "steam": {},
-        "twitch": {"followers": getTwitchData("followers")},
-        "youtube": {"followers": getYoutubeData("subscriberCount"),
-                    "views": getYoutubeData("viewCount"),
-                    "videos": getYoutubeData("videoCount")}
-    }
-
     if platform is None:
         for name, link in social.items():
             await ctx.send(f"[{name.capitalize()}]({link})")
-    else:
-        if platform not in social:
-            await ctx.send("I am sorry, but I dont linked my {platform}.\n"
+        return
+    if platform not in social:
+        await ctx.send("I am sorry, but I dont linked my {platform}.\n"
                        "You can see all my socials with !social")    
+        return
+    
+    if action is None:
+        await ctx.send(f"Here is the link to my [{platform}]({social[platform]})")
+        return
+    
+    if action not in actions[platform]:
+        if(actions[platform] is not None):
+            await ctx.send(f"There is no action called: {action}.\n"
+                           f"Supported actions for {platform} are: {", ".join(actions[platform].keys())}")
         else:
-            if action is None:
-                await ctx.send(f"Here is the link to my [{platform}]({social[platform]})")
-
-            elif action not in actions[platform]:
-                if(actions[platform] is not None):
-                    await ctx.send(f"There is no action called: {action}.\n"
-                                   f"Supported actions for {platform} are: {", ".join(actions[platform].keys())}")
-                else:
-                    await ctx.send(f"{platform} does not support any actions.")
-            else:
-                if action in actions[platform]:
-                    await ctx.send(f"SmyleSamm has {actions[platform][action]} {action}")
+            await ctx.send(f"{platform} does not support any actions.")
+        return
+    
+    if action in actions[platform]:
+        await ctx.send(f"SmyleSamm has {actions[platform][action]} {action}")
+        return
                   
 def help_embed():
     embed = discord.Embed(title="Help Menu", color=discord.Color.pink())
